@@ -26,12 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function question(){
+    public function questions(){
         return $this->hasMany(Question::class);
     }
-public function setTitleAttribute($value){
-    $this->attributes('title') = $value;
-    $this->attributes('slug') = str_slug($value);
-}
+
 
 }
