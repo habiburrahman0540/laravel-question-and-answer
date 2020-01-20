@@ -5,13 +5,41 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">All Questions</div>
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h1>All Questions</h1>
+                    
+                   <div class="ml-auto">
+                   <a href="{{route('question.create')}}" class="btn btn-outline-primary"><strong>Ask Question</strong> </a>
+                   </div>
+
+                </div>
+            </div>
 
                 <div class="card-body">
                     @foreach($questions as $question)
                         <div class="media">
+                            <div class="d-flex flex-column counters">
+                                <div class="vote">
+                                    <strong>{{$question->votes}}</strong> {{str_plural('vote'),$question->votes}}
+                                </div>
+                            <div class="status {{$question->Status}}">
+                                    <strong>{{$question->answers}}</strong> {{str_plural('answer',$question->answers)}}
+                                    </div>
+                                    <div class="view">
+                                    {{$question->views." ".str_plural('view'),$question->views}}
+                                    </div>
+                            </div>
+                            
+                                
+                           
                             <div class="media-body">
-                            <h1 class="mt-0">{{$question->title}}</h1>
+                            <h1 class="mt-0"><a href="{{$question->url}}">{{$question->title}}</a> </h1>
+                            <p class="lead">
+                                Asked by
+                            <a href="{{$question->user->url}}">{{$question->user->name}}</a>
+                            <small class="text-muted">{{$question->created_date}}</small>
+                            </p>
                             {{str_limit($question->body,250)}}
                             </div>
                         </div>
