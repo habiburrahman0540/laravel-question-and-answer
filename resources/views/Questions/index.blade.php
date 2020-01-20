@@ -12,11 +12,13 @@
                    <div class="ml-auto">
                    <a href="{{route('question.create')}}" class="btn btn-outline-primary"><strong>Ask Question</strong> </a>
                    </div>
+                   
 
                 </div>
             </div>
 
                 <div class="card-body">
+                    @include('layouts._message')
                     @foreach($questions as $question)
                         <div class="media">
                             <div class="d-flex flex-column counters">
